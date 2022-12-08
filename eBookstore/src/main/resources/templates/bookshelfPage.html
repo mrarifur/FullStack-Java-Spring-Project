@@ -9,7 +9,7 @@
     <h1>Bookshelf</h1>
     <ul>
         <li th:each="book : ${bookshelf}">
-            <span th:text="${book}">book</span>
+            <span th:text="${book.title} + ' (author ' + ${book.author} + ')'">book</span>
         </li>
     </ul>
 </body>

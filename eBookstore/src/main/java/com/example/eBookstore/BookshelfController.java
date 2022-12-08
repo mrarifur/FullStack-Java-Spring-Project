@@ -1,5 +1,6 @@
 package com.example.eBookstore;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,15 +10,14 @@ import java.util.ArrayList;
 @Controller
 public class BookshelfController {
 
+    @Autowired
+    private BookshelfService bookshelfService;
+
     @GetMapping("/bookshelf")
     public String getBookshelf(Model model) {
-        ArrayList<String> bookshelf = new ArrayList<>();
+        ArrayList<Book> bookshelf = bookshelfService.getBookshelf();
 
-        bookshelf.add("Book1");
-        bookshelf.add("Book2");
-        bookshelf.add("Book3");
-
-        model.addAttribute("bookshelf");
+        model.addAttribute("bookshelf", bookshelf);
         return "bookshelfPage";
     }
 }
