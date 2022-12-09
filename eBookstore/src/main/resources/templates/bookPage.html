@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBookstore - Bookshelf</title>
+</head>
+<body>
+    <form method="get" action="/bookshelf">
+        <button type="submit">Back</button>
+    </form>
+    <h2 th:text="${bookTitle}">title</h2>
+    <h2 th:text="${book.price} + ' €'">price</h2>
+    <div>
+        <p th:text="${book.description}">description</p>
+    </div>
+    <button>Buy</button>
+</body>
+</html>
