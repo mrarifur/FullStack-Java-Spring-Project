@@ -6,15 +6,15 @@
   <title>eBookstore - Wishlist</title>
 </head>
 <body>
-  <h1>Wishlist</h1>
-  <h3>Here's your wishlist!</h3>
-  <ul>
-    <li th:each="wishlist : ${wishlist}">
-      <span th:text="${wishlist}">wishlist</span>
-    </li>
-  </ul>
-  <form method="get" action="/">
-    <button type="submit">Front page</button>
-  </form>
+<h1>Wishlist</h1>
+<h3>Here's your wishlist!</h3>
+<ul>
+  <li th:each="wishlist : ${wishlist}">
+    <span th:text="${wishlist}">wishlist</span>
+  </li>
+</ul>
+<form method="get" action="/">
+  <button type="submit">Front page</button>
+</form>
 </body>
 </html>
