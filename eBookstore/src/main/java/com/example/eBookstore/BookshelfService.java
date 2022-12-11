@@ -1,13 +1,19 @@
 package com.example.eBookstore;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 
 @Service
 public class BookshelfService {
 
-    private ArrayList<Book> bookshelf;
+    @Autowired
+    private BookshelfRepository bookshelfRepository;
+
+
+    /*private ArrayList<Book> bookshelf;
 
     public BookshelfService() {
         this.bookshelf = new ArrayList<>();
@@ -33,18 +39,23 @@ public class BookshelfService {
         this.bookshelf.add(book8);
         this.bookshelf.add(book9);
         this.bookshelf.add(book10);
-    }
+    }*/
 
     public ArrayList<Book> getBookshelf() {
-        return this.bookshelf;
+        return this.bookshelfRepository.findAll();
     }
 
     public Book findBookByTitle(String bookTitle) {
-        for (Book book : this.bookshelf) {
-            if (book.getTitle().equals(bookTitle)) {
-                return book;
-            }
-        }
-        return bookshelf.get(0);
+        return this.bookshelfRepository.findByTitle(bookTitle).get(0);
+    }
+
+    public void addBook(String bookTitle, String bookAuthor, String bookReleaseDate, String bookGenre, double bookPrice, String bookDescription) {
+        Book book = new Book(bookTitle, bookAuthor, bookReleaseDate, bookDescription, bookGenre, bookPrice);
+        this.bookshelfRepository.save(book);
+    }
+
+    @Transactional
+    public void deleteBookById(Long bookId) {
+        this.bookshelfRepository.deleteById(bookId);
     }
 }

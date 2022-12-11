@@ -6,17 +6,18 @@
     <title>eBookstore - Bookshelf</title>
 </head>
 <body>
-<form method="get" action="/">
-    <button type="submit">Front page</button>
-</form>
     <h1>Bookshelf</h1>
     <ul>
         <li th:each="book : ${bookshelf}">
             <span th:text="${book.title} + ' (author ' + ${book.author} + ')'">book</span>
+            <h3 th:text="${book.price}">price</h3>
             <form method="get" th:action="@{bookshelf/{item} (item=${book.title})}">
                 <button type="submit">View</button>
             </form>
         </li>
     </ul>
+    <form method="get" action="/">
+        <button type="submit">Front page</button>
+    </form>
 </body>
 </html>

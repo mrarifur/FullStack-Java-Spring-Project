@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBookstore - Add a book</title>
 </head>
 <body>
-$END$
+<h2>Add a new book to the collection</h2>
+<h3>Fill in the form:</h3>
+<form  method="post" action="/add">
+    <p>
+        <input type="text" name="bookTitle" placeholder="Book title..." required>
+        <input type="text" name="bookAuthor" placeholder="Book author..." required>
+        <input type="text" name="bookReleaseDate" placeholder="Book release date..." required>
+        <input type="text" name="bookGenre" placeholder="Book genre..." required>
+        <input type="text" name="bookPrice" placeholder="Book price..." required>
+        <input type="text" name="bookDescription" placeholder="Book description..." required>
+        <button type="submit">Add New Book</button>
+    </p>
+</form>
+
+<div>
+    <ul>
+        <li th:each="book : ${bookshelf}">
+            <span th:text="${book.title} + ' (author ' + ${book.author} + ')'">book</span>
+            <form method="post" action="/deletebook">
+                <input type="hidden" name="bookId" th:value="${book.id}">
+                <button>Delete</button>
+            </form>
+        </li>
+    </ul>
+</div>
+
+<form method="get" action="/">
+    <button type="submit">Back</button>
+</form>
 </body>
 </html>
