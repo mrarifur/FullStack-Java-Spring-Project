@@ -1,6 +1,3 @@
-2022-12-11 10:07:34 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'The Hunger Games follows 16-year-old Katniss Everdeen, a girl from District 12 who volunteers for the 74th Hunger Games in plac... (434)"; SQL statement:
-insert into book (author, description, genre, price, release_date, title, id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]
-2022-12-11 10:07:41 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'The Hunger Games follows 16-year-old Katniss Everdeen, a girl from District 12 who volunteers for the 74th Hunger Games in plac... (434)"; SQL statement:
+2022-12-11 22:57:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "'A Christmas Carol recounts the story of Ebenezer Scrooge, an elderly miser who is visited by the ghost of his former business p... (277)"; SQL statement:
 insert into book (author, description, genre, price, release_date, title, id) values (?, ?, ?, ?, ?, ?, ?) [22001-200]

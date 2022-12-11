@@ -7,12 +7,23 @@
 </head>
 <body>
     <h2 th:text="${bookTitle}">title</h2>
-    <h2 th:text="${book.price} + ' €'">price</h2>
+    <h3 th:text="${book.price} + ' €'">price</h3>
     <div>
+        <h3>Description</h3>
         <p th:text="${book.description}">description</p>
     </div>
+    <ul>
+        <li th:text="'Genre: ' + ${book.genre}">genre</li>
+        <li th:text="'Author: ' + ${book.author}">author</li>
+        <li th:text="'Price: ' + ${book.price}">price</li>
+    </ul>
     <button>Buy</button>
-    <br>
+    <form  method="post" action="/addwish">
+        <input type="hidden" name="bookTitle" th:value="${book.title}">
+        <input type="hidden" name="bookAuthor" th:value="${book.author}">
+        <input type="hidden" name="bookId" th:value="${book.id}">
+        <button type="submit">Add to Wishlist</button>
+    </form>
     <br>
     <form method="get" action="/bookshelf">
         <button type="submit">Back</button>

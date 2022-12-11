@@ -16,6 +16,9 @@ public class BookshelfController {
     @Autowired
     private BookshelfService bookshelfService;
 
+    @Autowired
+    private WishListService wishListService;
+
     @GetMapping("/bookshelf")
     public String getBookshelf(Model model) {
         ArrayList<Book> bookshelf = bookshelfService.getBookshelf();
@@ -46,7 +49,10 @@ public class BookshelfController {
 
     @PostMapping("deletebook")
     public String deleteBook(@RequestParam Long bookId) {
+        //Delete book by ID
         bookshelfService.deleteBookById(bookId);
+        //Delete wishlist made for that book (NOT WORKING CURRENTLY)
+        wishListService.deleteWishListByBookId(bookId);
         return "redirect:/add";
     }
 }
