@@ -8,5 +8,4 @@ public interface WishListRepository extends JpaRepository<WishList, Long> {
     @Override
     ArrayList<WishList> findAll();
 
-    void deleteByBookId(Long bookId);
 }

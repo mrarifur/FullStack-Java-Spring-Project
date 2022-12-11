@@ -10,9 +10,22 @@
 <h3>Here's your wishlist!</h3>
 <ul>
   <li th:each="wishlist : ${wishlist}">
-    <span th:text="${wishlist}">wishlist</span>
+    <span th:text="${wishlist.bookTitle}">bookTitle</span>
+    <form method="post" action="/deletewish">
+      <input type="hidden" name="wishListId" th:value="${wishlist.id}">
+      <input type="hidden" name="bookTitle" th:value="${wishlist.bookTitle}">
+      <button>Delete</button>
+    </form>
   </li>
 </ul>
+<form method="post" action="/deletewishlist">
+  <button>Delete All</button>
+</form>
+<br>
+<form method="get" action="/bookshelf">
+  <button type="submit">View Bookshelf</button>
+</form>
+<br>
 <form method="get" action="/">
   <button type="submit">Front page</button>
 </form>

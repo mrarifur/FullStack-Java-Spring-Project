@@ -15,5 +15,4 @@ public class StoreController {
     public String redirectToIndex() {
         return "redirect:/";
     }
-
 }

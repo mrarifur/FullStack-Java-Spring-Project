@@ -51,8 +51,14 @@ public class BookshelfController {
     public String deleteBook(@RequestParam Long bookId) {
         //Delete book by ID
         bookshelfService.deleteBookById(bookId);
-        //Delete wishlist made for that book (NOT WORKING CURRENTLY)
-        wishListService.deleteWishListByBookId(bookId);
+        //Delete wishlist made for the book that was deleted
+        ArrayList<WishList> wishList = wishListService.getWishList();
+        for (WishList list : wishList) {
+            if (list.getBookId().equals(bookId)){
+                wishListService.deleteWishListById(list.getId());
+            }
+        }
+
         return "redirect:/add";
     }
 }

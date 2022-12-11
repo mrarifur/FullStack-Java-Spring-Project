@@ -21,7 +21,10 @@ public class WishListService {
         return wishListRepository.findAll();
     }
 
-    public void deleteWishListByBookId(Long bookId) {
-        this.wishListRepository.deleteByBookId(bookId);
+    public void deleteWishListById(Long wishListId) {
+        this.wishListRepository.deleteById(wishListId);
+    }
+
+    public void deleteAllWishList() { this.wishListRepository.deleteAll();
     }
 }
